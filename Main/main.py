@@ -5,6 +5,7 @@ import time
 
 from selenium import webdriver
 
+# I will polish the code tomrow
 
 file_path = []
 def start():
