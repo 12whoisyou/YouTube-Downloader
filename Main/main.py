@@ -1,16 +1,17 @@
 from pytube import YouTube
 from pytube import Search
-import sys, os
+import os
 import time
 
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 # I will polish the code tomrow
 
 
 
 file_path = []
-website = "http://10.0.0.5/"
+
 os.chdir(os.getcwd())
 
 def start():
@@ -26,8 +27,12 @@ def start():
         
     print("Downloaded all files")
 
-
-    upload_to_phone()
+    try: 
+        upload_to_phone()
+    except:
+        print("your phone is not hosting the website")
+        print("or you interenett is slow")
+        time.sleep(2.0)
 
 def download(name):
     if "https" in name:
@@ -43,17 +48,27 @@ def download(name):
 
 
 def upload_to_phone():
+    print("Make sure that your phone is on")
+    print("Example website is http://10.0.0.5")
+
+    website = input("Which website is your phone telling to upload on? ")
     driver = webdriver.Chrome()
     driver.get(website)
-    time.sleep(10)
 
-    input = driver.find_element_by_id("fileupload")
-    for file in file_path:
-        input.send_keys(os.path.abspath(file))
+    #Making sure it's loaded
+    time.sleep(5)
+
+    input_web = driver.find_element(By.ID, "fileupload")
     
-    file_loader = driver.find_element_by_class_name("uploading")
+    for count, file in enumerate(file_path):
+        file_path[count] = os.path.abspath(file)
+        
+    input_web.send_keys(os.path.abspath(" \n ".join(file_path)))
+
+
+    file_loader = driver.find_element(By.CLASS_NAME, "uploading")
     
-    driver.find_element_by_id("upload-file").click()
+    driver.find_element(By.ID, "upload-file").click()
     
     while file_loader.is_displayed():
         time.sleep(3)
@@ -63,3 +78,4 @@ def upload_to_phone():
 if __name__ == '__main__':
     print("hi and welcome to this masterpiece of a softawre")
     start()
+
