@@ -9,6 +9,8 @@ from selenium.webdriver.common.by import By
 
 
 
+#Bug Cannot find the file in \\
+#Why does absolute file result in double \\?
 
 file_path = [] #Storing file name until making them to full path
 
@@ -42,7 +44,7 @@ def download(name):
     if "https" in name:
         video = YouTube(name) 
     else: 
-        s = Search(name+ " audio")
+        s = Search(name+ " full audio")
         video = s.results[0]
 
     #Downloading the video as audio
@@ -59,7 +61,7 @@ def upload_to_phone():
     print("Make sure that your phone is on")
     print("Example website is http://10.0.0.5")
     website = input("Which website is your phone telling to upload on? ")
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(os.path.abspath("chromedriver.exe"))
     driver.get(website)
 
 
@@ -83,7 +85,9 @@ def throw_error(err_message): #This is also used to when the program has done it
     print(err_message)    
     time.sleep(2)
     delete_files()
+    quit()
 
 if __name__ == '__main__':
     start()
+
 
