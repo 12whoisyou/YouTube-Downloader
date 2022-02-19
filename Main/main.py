@@ -8,9 +8,8 @@ from selenium.webdriver.common.by import By
 
 
 
-
-#Bug Cannot find the file in \\
-#Why does absolute file result in double \\?
+#Bug when trying to upload one file,
+#Cannot find the file in \\
 
 file_path = [] #Storing file name until making them to full path
 
@@ -69,7 +68,7 @@ def upload_to_phone():
     input_web = driver.find_element(By.ID, "fileupload")
     for count, file in enumerate(file_path):
         file_path[count] = os.path.abspath(file)
-    input_web.send_keys(os.path.abspath(" \n ".join(file_path)))
+    input_web.send_keys(" \n ".join(file_path))
 
     #Making sure everything is uploaded and ending the program
     file_loader = driver.find_element(By.CLASS_NAME, "uploading")
