@@ -8,8 +8,8 @@ from selenium.webdriver.common.by import By
 
 
 
-#Bug when trying to upload one file,
-#Cannot find the file in \\
+#Fully working. It throughs some error which annys me
+#Any idea on how to get rid of them?
 
 file_path = [] #Storing file name until making them to full path
 
