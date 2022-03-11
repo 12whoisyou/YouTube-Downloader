@@ -54,7 +54,6 @@ def download(name):
     #From mp4 to mp3
     os.rename(video.title+'.mp4', video.title+'.mp3')
 
-
 def upload_to_phone():
     #Getting the website
     print("Make sure that your phone is on")
@@ -83,8 +82,10 @@ def delete_files():
 def throw_error(err_message): #This is also used to when the program has done it's job
     print(err_message)    
     time.sleep(2)
-    delete_files()
-    quit()
+    delete = input("Do you want to delete are your'e downloaded song? Y/N")
+    if delete != "N" or delete != "No":
+        delete_files()
+        quit()
 
 if __name__ == '__main__':
     start()
