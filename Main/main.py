@@ -83,9 +83,10 @@ def throw_error(err_message): #This is also used to when the program has done it
     print(err_message)    
     time.sleep(2)
     delete = input("Do you want to delete are your'e downloaded song? Y/N")
-    if delete != "N" or delete != "No":
+    delete = delete.lower
+    if delete != "n" or delete != "no":
         delete_files()
-        quit()
+    quit()
 
 if __name__ == '__main__':
     start()
