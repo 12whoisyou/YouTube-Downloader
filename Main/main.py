@@ -5,6 +5,8 @@ import time
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 
@@ -59,7 +61,7 @@ def upload_to_phone():
     print("Make sure that your phone is on")
     print("Example website is http://10.0.0.5")
     website = input("Which website is your phone telling to upload on? ")
-    driver = webdriver.Chrome(os.path.abspath("chromedriver.exe"))
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.get(website)
 
 
@@ -86,6 +88,7 @@ def throw_error(err_message): #This is also used to when the program has done it
     delete = delete.lower
     if delete != "n" or delete != "no":
         delete_files()
+    print(file_path)
     quit()
 
 if __name__ == '__main__':
