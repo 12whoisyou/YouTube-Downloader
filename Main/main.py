@@ -10,8 +10,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 
-#Fully working. It throughs some error which annys me
-#Any idea on how to get rid of them?
+#Throws some errors that are anyoing
+#Phone not connect to internett error after uploaded on phone
 
 file_path = [] #Storing file name until making them to full path
 
